@@ -4,11 +4,11 @@ project(trajopt)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 
 option(DEVEL_MODE "build with compiler more errors" OFF)
-if (DEVEL_MODE) 
+if (DEVEL_MODE)
   set(CMAKE_CXX_FLAGS "-Werror -Wall -Wno-sign-compare")
 endif(DEVEL_MODE)
 
-set(CMAKE_INCLUDE_SYSTEM_FLAG_CXX "-isystem ")        
+set(CMAKE_INCLUDE_SYSTEM_FLAG_CXX "-isystem ")
 
 # http://cmake.3232098.n2.nabble.com/Default-value-for-CMAKE-BUILD-TYPE-td7550756.html
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -21,7 +21,6 @@ endif()
 
 find_package(Eigen REQUIRED)
 find_package(Boost COMPONENTS system python thread program_options REQUIRED)
-find_package(OpenRAVE REQUIRED)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -36,15 +35,8 @@ set(HACD_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/ext/HACD_Lib/inc ${CMAKE_SOURCE_DIR}/e
 
 enable_testing()
 
-option(BUILD_CLOUDPROC "build point cloud processing stuff" OFF)
-option(BUILD_SANDBOX "build sandbox programs" OFF)
-option(BUILD_HUMANOIDS "build humanoids stuff" OFF)
-option(BUILD_SENSORSIM "build sensor simulation" OFF)
-
 include("${CMAKE_SOURCE_DIR}/cmake/boost-python.cmake")
 include("${CMAKE_SOURCE_DIR}/cmake/add_python_unit_tests.cmake")
 
-
 add_subdirectory(ext)
 add_subdirectory(src)
-
