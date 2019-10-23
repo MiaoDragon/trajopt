@@ -36,7 +36,6 @@ set(HACD_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/ext/HACD_Lib/inc ${CMAKE_SOURCE_DIR}/e
 enable_testing()
 
 include("${CMAKE_SOURCE_DIR}/cmake/boost-python.cmake")
-include("${CMAKE_SOURCE_DIR}/cmake/add_python_unit_tests.cmake")
 
 add_subdirectory(ext)
 add_subdirectory(src)
